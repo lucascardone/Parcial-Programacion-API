@@ -1,4 +1,3 @@
-# Falta probar!
 FROM alpine:latest as build
 
 RUN apk update

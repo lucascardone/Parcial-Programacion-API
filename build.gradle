@@ -42,6 +42,6 @@ tasks.named('test') {
 
 jar {
     manifest {
-        attributes 'SpringbootApiRestApplication': 'com.utn.apirest.SpringbootApiRestApplication'
+        attributes 'ApirestApplication': 'com.utn.apirest.ApirestApplication' // Reemplaza 'tu.paquete.MainClass' con la clase principal de tu aplicación
     }
 }
