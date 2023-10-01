@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -24,7 +25,9 @@ public interface PersonaRepository extends BaseRepository<Persona, Long> {
      * Búsqueda por nombre o apellido utilizando Spring Data Query Methods.
      */
     List<Persona> findByNombreContainingOrApellidoContaining(String nombre, String apellido);
-    Page<Persona> findByNombreContainingOrApellidoContaining(String nombre, String apellido, Pageable pageable);
+
+    @GetMapping("/findByNombreAndApellido")
+    Page<Persona> findByNombreContainingAndApellidoContaining(String nombre, String apellido, Pageable pageable);
 
     /**
      * Consulta JPQL con parámetros indexados.
@@ -32,7 +35,7 @@ public interface PersonaRepository extends BaseRepository<Persona, Long> {
     @Query(value = "SELECT p FROM Persona p WHERE p.nombre LIKE %?1% OR p.apellido LIKE %?1%")
     List<Persona> search(String filtro);
     @Query(value = "SELECT p FROM Persona p WHERE p.nombre LIKE %?1% OR p.apellido LIKE %?1%")
-    Page<Persona> search(String filtro, Pageable pageable);
+    Page<Persona> searchPageable(String filtro, Pageable pageable);
 
     /**
      * Consulta JPQL con parámetros nombrados (comentada para evitar conflicto con la consulta nativa).
@@ -52,5 +55,5 @@ public interface PersonaRepository extends BaseRepository<Persona, Long> {
             countQuery = "SELECT count(*) FROM persona",
             nativeQuery = true
     )
-    Page<Persona> searchNativo(String filtro, Pageable pageable);
+    Page<Persona> searchNativoPageable(String filtro, Pageable pageable);
 }

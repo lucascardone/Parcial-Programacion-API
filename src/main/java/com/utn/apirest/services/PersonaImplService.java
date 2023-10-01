@@ -61,7 +61,7 @@ public class PersonaImplService extends BaseImplService<Persona, Long> implement
     public Page<Persona> search(String filtro, Pageable pageable) throws Exception {
         try {
             // Realizar una búsqueda paginada de personas que contengan el filtro en el nombre o apellido.
-            Page<Persona> personas = personaRepository.findByNombreContainingOrApellidoContaining(filtro, filtro, pageable);
+            Page<Persona> personas = personaRepository.findByNombreContainingAndApellidoContaining(filtro, filtro, pageable);
             // Page<Persona> personas = personaRepository.search(filtro, pageable);
             // Page<Persona> personas = personaRepository.searchNativo(filtro, pageable);
             return personas;
