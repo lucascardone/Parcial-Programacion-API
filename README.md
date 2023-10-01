@@ -7,4 +7,5 @@ En h2 se persisten las entidades de:
 - Autores
 - Localidades
 - Domicilios
+
 La documentacion con swagger se encuentra en la siguiente url: https://parcial1-programacion.onrender.com/swagger-ui/index.html
